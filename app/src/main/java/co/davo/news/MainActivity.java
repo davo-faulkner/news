@@ -7,6 +7,7 @@ import android.os.Bundle;
 import android.support.v4.app.LoaderManager;
 import android.support.v4.content.Loader;
 import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.widget.ProgressBar;
 import android.widget.TextView;
@@ -18,7 +19,7 @@ public class MainActivity extends AppCompatActivity implements LoaderManager.Loa
     private static final int ARTICLE_LOADER_ID = 1;
 
     private RecyclerView recyclerView;
-    private RecyclerView.Adapter recyclerViewAdapter;
+    private RecyclerView.Adapter articleAdapter;
     private RecyclerView.LayoutManager layoutManager;
 
     private TextView emptyStateTextView;
@@ -65,7 +66,16 @@ public class MainActivity extends AppCompatActivity implements LoaderManager.Loa
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        RecyclerView articleRecyclerView = (RecyclerView) findViewById(R.id.recycler_view);
+        recyclerView = (RecyclerView) findViewById(R.id.recycler_view);
+        recyclerView.setHasFixedSize(true);
+
+        layoutManager = new LinearLayoutManager(this);
+        recyclerView.setLayoutManager(layoutManager);
+
+        //TODO Fix this, Davo
+        articleAdapter = new ArticleAdapter(articles);
+        recyclerView.setAdapter(articleAdapter);
+
         emptyStateTextView = (TextView) findViewById(R.id.empty_view);
 
         ConnectivityManager cm =
