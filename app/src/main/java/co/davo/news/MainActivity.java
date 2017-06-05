@@ -64,6 +64,7 @@ public class MainActivity extends AppCompatActivity implements LoaderManager.Loa
 
         RecyclerView articleRecyclerView = (RecyclerView) findViewById(R.id.recycler_view);
         emptyStateTextView = (TextView) findViewById(R.id.empty_view);
+        //TODO Continue here, Davo
     }
 
     @Override
