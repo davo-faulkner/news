@@ -9,12 +9,14 @@ import java.util.Date;
 public class Article {
     private String title;
     private String section;
+    private boolean hasAuthor;
     private String author;
     private Date publicationDate;
 
-    public Article(String title, String section, String author, Date publicationDate) {
+    public Article(String title, String section, boolean hasAuthor, String author, Date publicationDate) {
         this.title = title;
         this.section = section;
+        this.hasAuthor = hasAuthor;
         this.author = author;
         this.publicationDate = publicationDate;
     }
@@ -25,6 +27,10 @@ public class Article {
 
     public String getSection() {
         return section;
+    }
+
+    public boolean getHasAuthor() {
+        return  hasAuthor;
     }
 
     public String getAuthor() {
