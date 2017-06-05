@@ -1,11 +1,11 @@
 package co.davo.news;
 
 import android.content.Context;
+import android.content.Loader;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 import android.os.Bundle;
 import android.app.LoaderManager;
-import android.support.v4.content.Loader;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
@@ -102,12 +102,10 @@ public class MainActivity extends AppCompatActivity implements LoaderManager.Loa
     public Loader<ArrayList<Article>> onCreateLoader(int id, Bundle args) {
         return null;
     }
-
     @Override
     public void onLoadFinished(Loader<ArrayList<Article>> loader, ArrayList<Article> data) {
 
     }
-
     @Override
     public void onLoaderReset(Loader<ArrayList<Article>> loader) {
 
