@@ -61,6 +61,9 @@ public class MainActivity extends AppCompatActivity implements LoaderManager.Loa
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        RecyclerView articleRecyclerView = (RecyclerView) findViewById(R.id.recycler_view);
+        emptyStateTextView = (TextView) findViewById(R.id.empty_view);
     }
 
     @Override
