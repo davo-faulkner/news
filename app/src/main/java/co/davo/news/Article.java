@@ -12,13 +12,15 @@ public class Article {
     private boolean hasAuthor;
     private String author;
     private Date publicationDate;
+    private String url;
 
-    public Article(String title, String section, boolean hasAuthor, String author, Date publicationDate) {
+    public Article(String title, String section, boolean hasAuthor, String author, Date publicationDate, String url) {
         this.title = title;
         this.section = section;
         this.hasAuthor = hasAuthor;
         this.author = author;
         this.publicationDate = publicationDate;
+        this.url = url;
     }
 
     public String getTitle() {
@@ -39,5 +41,9 @@ public class Article {
 
     public Date getPublicationDate() {
         return publicationDate;
+    }
+
+    public String getUrl() {
+        return url;
     }
 }
