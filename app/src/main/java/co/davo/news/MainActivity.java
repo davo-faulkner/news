@@ -1,5 +1,8 @@
 package co.davo.news;
 
+import android.content.Context;
+import android.net.ConnectivityManager;
+import android.net.NetworkInfo;
 import android.os.Bundle;
 import android.support.v4.app.LoaderManager;
 import android.support.v4.content.Loader;
@@ -64,7 +67,13 @@ public class MainActivity extends AppCompatActivity implements LoaderManager.Loa
 
         RecyclerView articleRecyclerView = (RecyclerView) findViewById(R.id.recycler_view);
         emptyStateTextView = (TextView) findViewById(R.id.empty_view);
-        //TODO Continue here, Davo
+
+        ConnectivityManager cm =
+                (ConnectivityManager) this.getSystemService(Context.CONNECTIVITY_SERVICE);
+
+        NetworkInfo activeNetwork = cm.getActiveNetworkInfo();
+        boolean isConnected = activeNetwork != null &&
+                activeNetwork.isConnectedOrConnecting();
     }
 
     @Override
