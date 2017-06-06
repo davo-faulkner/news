@@ -3,6 +3,7 @@ package co.davo.news;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.TextView;
 
 import java.util.ArrayList;
 
@@ -18,6 +19,10 @@ public class RecyclerAdapter extends RecyclerView.Adapter<RecyclerAdapter.Articl
     }
 
     public static class ArticleHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
+        private TextView titleTextView;
+        private TextView sectionTextView;
+        private TextView authorTextView;
+        private TextView publicationDateTextView;
 
         public ArticleHolder(View itemView) {
             super(itemView);
