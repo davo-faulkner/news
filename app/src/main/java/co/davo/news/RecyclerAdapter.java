@@ -2,6 +2,7 @@ package co.davo.news;
 
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
+import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
@@ -46,7 +47,8 @@ public class RecyclerAdapter extends RecyclerView.Adapter<RecyclerAdapter.Articl
 
     @Override
     public RecyclerAdapter.ArticleHolder onCreateViewHolder(ViewGroup parent, int viewType) {
-        return null;
+        View inflatedView = LayoutInflater.from(parent.getContext()).inflate(R.layout.card_view_layout,parent, false);
+        return new ArticleHolder(inflatedView);
     }
 
     @Override
