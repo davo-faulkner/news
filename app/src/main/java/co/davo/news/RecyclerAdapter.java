@@ -11,14 +11,18 @@ import java.util.ArrayList;
 
 public class RecyclerAdapter extends RecyclerView.Adapter<RecyclerAdapter.ArticleHolder> {
     private ArrayList<Article> articles;
-    
+
+    public RecyclerAdapter(ArrayList<Article> articles) {
+        this.articles = articles;
+    }
+
     @Override
-    public RecyclerAdapter.ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
+    public RecyclerAdapter.ArticleHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         return null;
     }
 
     @Override
-    public void onBindViewHolder(RecyclerAdapter.ViewHolder holder, int position) {
+    public void onBindViewHolder(RecyclerAdapter.ArticleHolder holder, int position) {
 
     }
 
