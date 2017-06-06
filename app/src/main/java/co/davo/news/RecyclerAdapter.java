@@ -24,8 +24,17 @@ public class RecyclerAdapter extends RecyclerView.Adapter<RecyclerAdapter.Articl
         private TextView authorTextView;
         private TextView publicationDateTextView;
 
+        private static final String ARTICLE_KEY = "ARTICLE";
+
         public ArticleHolder(View itemView) {
             super(itemView);
+
+            this.titleTextView = (TextView) itemView.findViewById(R.id.title);
+            this.sectionTextView = (TextView) itemView.findViewById(R.id.section);
+            this.authorTextView = (TextView) itemView.findViewById(R.id.author);
+            this.publicationDateTextView = (TextView) itemView.findViewById(R.id.publication_date);
+
+            itemView.setOnClickListener(this);
         }
 
         @Override
