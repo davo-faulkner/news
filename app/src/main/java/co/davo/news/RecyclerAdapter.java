@@ -40,7 +40,6 @@ public class RecyclerAdapter extends RecyclerView.Adapter<RecyclerAdapter.Articl
 
         @Override
         public void onClick(View v) {
-            //TODO Insert Website Intent here, Davo
             Log.d("RecyclerView", "CLICK!");
         }
     }
