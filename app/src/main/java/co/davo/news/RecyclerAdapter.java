@@ -47,7 +47,7 @@ public class RecyclerAdapter extends RecyclerView.Adapter<RecyclerAdapter.Articl
 
     @Override
     public RecyclerAdapter.ArticleHolder onCreateViewHolder(ViewGroup parent, int viewType) {
-        View inflatedView = LayoutInflater.from(parent.getContext()).inflate(R.layout.card_view_layout,parent, false);
+        View inflatedView = LayoutInflater.from(parent.getContext()).inflate(R.layout.card_view_layout, parent, false);
         return new ArticleHolder(inflatedView);
     }
 

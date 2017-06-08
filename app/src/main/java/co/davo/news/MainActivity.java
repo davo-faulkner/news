@@ -19,6 +19,8 @@ public class MainActivity extends AppCompatActivity implements LoaderManager.Loa
     public static final String LOG_TAG = MainActivity.class.getName();
     private static final int ARTICLE_LOADER_ID = 1;
 
+    private ArrayList<Article> articles;
+
     private RecyclerView recyclerView;
     private RecyclerView.Adapter articleAdapter;
     private RecyclerView.LayoutManager layoutManager;
