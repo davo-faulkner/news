@@ -39,8 +39,10 @@ public class Article {
         return author;
     }
 
-    public Date getPublicationDate() {
-        return publicationDate;
+    public String getPublicationDate() {
+        String publicationDateString = "DATE PH";
+        //TODO Add Date Formatter, Davo
+        return publicationDateString;
     }
 
     public String getUrl() {

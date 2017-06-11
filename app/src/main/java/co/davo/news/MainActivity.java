@@ -7,6 +7,7 @@ import android.net.NetworkInfo;
 import android.os.Bundle;
 import android.app.LoaderManager;
 import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.DefaultItemAnimator;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
@@ -18,6 +19,8 @@ import java.util.ArrayList;
 public class MainActivity extends AppCompatActivity implements LoaderManager.LoaderCallbacks<ArrayList<Article>> {
     public static final String LOG_TAG = MainActivity.class.getName();
     private static final int ARTICLE_LOADER_ID = 1;
+
+    private ArrayList<Article> articles;
 
     private RecyclerView recyclerView;
     private RecyclerView.Adapter articleAdapter;
@@ -68,14 +71,12 @@ public class MainActivity extends AppCompatActivity implements LoaderManager.Loa
         setContentView(R.layout.activity_main);
 
         recyclerView = (RecyclerView) findViewById(R.id.recycler_view);
-        recyclerView.setHasFixedSize(true);
-
         layoutManager = new LinearLayoutManager(this);
-        recyclerView.setLayoutManager(layoutManager);
-
-        //TODO Fix this, Davo
-        articleAdapter = new ArticleAdapter(articles);
+        articleAdapter = new RecyclerAdapter(articles);
         recyclerView.setAdapter(articleAdapter);
+        recyclerView.setHasFixedSize(true);
+        recyclerView.setLayoutManager(layoutManager);
+        recyclerView.setItemAnimator(new DefaultItemAnimator());
 
         emptyStateTextView = (TextView) findViewById(R.id.empty_view);
 
