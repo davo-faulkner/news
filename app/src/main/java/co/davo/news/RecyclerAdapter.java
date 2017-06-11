@@ -28,15 +28,15 @@ public class RecyclerAdapter extends RecyclerView.Adapter<RecyclerAdapter.Articl
 
         private static final String ARTICLE_KEY = "ARTICLE";
 
-        public ArticleHolder(View view) {
-            super(view);
+        public ArticleHolder(View v) {
+            super(v);
 
-            this.titleTextView = (TextView) view.findViewById(R.id.title);
-            this.sectionTextView = (TextView) view.findViewById(R.id.section);
-            this.authorTextView = (TextView) view.findViewById(R.id.author);
-            this.publicationDateTextView = (TextView) view.findViewById(R.id.publication_date);
+            this.titleTextView = (TextView) v.findViewById(R.id.title);
+            this.sectionTextView = (TextView) v.findViewById(R.id.section);
+            this.authorTextView = (TextView) v.findViewById(R.id.author);
+            this.publicationDateTextView = (TextView) v.findViewById(R.id.publication_date);
 
-            view.setOnClickListener(this);
+            v.setOnClickListener(this);
         }
 
         @Override
