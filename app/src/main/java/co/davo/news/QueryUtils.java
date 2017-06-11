@@ -32,9 +32,16 @@ public final class QueryUtils {
     private static final String KEY_AUTHOR = "";
     private static final String KEY_PUBLICATION_DATE = "webPublicationDate";
     private static final String KEY_URL = "apiUrl";
-    
+
     //Empty constructor to keep class from becoming instantiated
     private QueryUtils() {
+    }
+
+    public static ArrayList<Article> extractArticles(String requestUrl) {
+        ArrayList<Article> articles = new ArrayList<>();
+        String articlesJsonString = fetchArticleData(requestUrl);
+
+        return articles;
     }
 
 }
