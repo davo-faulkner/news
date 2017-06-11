@@ -1,7 +1,5 @@
 package co.davo.news;
 
-import java.util.Date;
-
 /**
  * Created by Davo on 6/4/2017.
  */
@@ -11,10 +9,10 @@ public class Article {
     private String section;
     private boolean hasAuthor;
     private String author;
-    private Date publicationDate;
+    private String publicationDate;
     private String url;
 
-    public Article(String title, String section, boolean hasAuthor, String author, Date publicationDate, String url) {
+    public Article(String title, String section, boolean hasAuthor, String author, String publicationDate, String url) {
         this.title = title;
         this.section = section;
         this.hasAuthor = hasAuthor;
@@ -40,9 +38,8 @@ public class Article {
     }
 
     public String getPublicationDate() {
-        String publicationDateString = "DATE PH";
         //TODO Add Date Formatter, Davo
-        return publicationDateString;
+        return publicationDate;
     }
 
     public String getUrl() {
