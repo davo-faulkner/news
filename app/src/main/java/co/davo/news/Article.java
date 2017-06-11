@@ -38,7 +38,6 @@ public class Article {
     }
 
     public String getPublicationDate() {
-        //TODO Add Date Formatter, Davo
         return publicationDate;
     }
 
