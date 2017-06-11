@@ -40,7 +40,9 @@ public class Article {
     }
 
     public String getPublicationDate() {
-        return publicationDate;
+        String publicationDateString = "DATE PH";
+        //TODO Add Date Formatter, Davo
+        return publicationDateString;
     }
 
     public String getUrl() {

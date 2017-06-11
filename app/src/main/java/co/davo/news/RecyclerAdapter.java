@@ -57,7 +57,7 @@ public class RecyclerAdapter extends RecyclerView.Adapter<RecyclerAdapter.Articl
         holder.titleTextView.setText(article.getTitle());
         holder.sectionTextView.setText(article.getSection());
         holder.authorTextView.setText(article.getAuthor());
-        holder.publicationDateTextView.setText(getPublicationDate());
+        holder.publicationDateTextView.setText(article.getPublicationDate());
     }
 
     @Override
