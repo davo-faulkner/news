@@ -1,5 +1,8 @@
 package co.davo.news;
 
+import android.content.Context;
+import android.content.Intent;
+import android.net.Uri;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -9,12 +12,14 @@ import android.widget.TextView;
 
 import java.util.ArrayList;
 
+import static android.R.attr.start;
+
 /**
  * Created by Davo on 6/5/2017.
  */
 
 public class RecyclerAdapter extends RecyclerView.Adapter<RecyclerAdapter.ArticleHolder> {
-    private ArrayList<Article> articles;
+    private static ArrayList<Article> articles;
 
     public RecyclerAdapter(ArrayList<Article> articles) {
         this.articles = articles;
@@ -42,6 +47,13 @@ public class RecyclerAdapter extends RecyclerView.Adapter<RecyclerAdapter.Articl
         @Override
         public void onClick(View v) {
             Log.d("RecyclerView", "CLICK!");
+            Context context = v.getContext();
+            int itemPosition = getAdapterPosition();
+            Article currentArticle = articles.get(itemPosition);
+            String currentUrl = currentArticle.getUrl();
+            Uri currentUri = Uri.parse(currentUrl);
+            Intent websiteIntent = new Intent(Intent.ACTION_VIEW, currentUri);
+            context.startActivity(websiteIntent);
         }
     }
 
