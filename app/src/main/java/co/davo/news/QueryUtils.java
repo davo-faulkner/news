@@ -47,7 +47,20 @@ public final class QueryUtils {
     private static String fetchArticleData(String requestUrl) {
         URL url = createUrl(requestUrl);
         String articlesJsonString = null;
-        
+
+        return articlesJsonString;
+    }
+
+    private static URL createUrl(String stringUrl) {
+        URL url = null;
+        try {
+            url = new URL(stringUrl);
+        }
+        catch (MalformedURLException e) {
+            Log.e(LOG_TAG, "Error creating URL", e);
+            MainActivity.setHasMalformedUrlException(true);
+        }
+        return url;
     }
 
 }
