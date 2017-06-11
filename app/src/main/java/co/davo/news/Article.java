@@ -39,7 +39,7 @@ public class Article {
         return author;
     }
 
-    public Date getPublicationDate() {
+    public String getPublicationDate() {
         return publicationDate;
     }
 

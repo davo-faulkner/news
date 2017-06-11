@@ -53,7 +53,11 @@ public class RecyclerAdapter extends RecyclerView.Adapter<RecyclerAdapter.Articl
 
     @Override
     public void onBindViewHolder(RecyclerAdapter.ArticleHolder holder, int position) {
-
+        Article article = articles.get(position);
+        holder.titleTextView.setText(article.getTitle());
+        holder.sectionTextView.setText(article.getSection());
+        holder.authorTextView.setText(article.getAuthor());
+        holder.publicationDateTextView.setText(getPublicationDate());
     }
 
     @Override
