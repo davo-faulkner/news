@@ -26,5 +26,15 @@ import static co.davo.news.MainActivity.LOG_TAG;
  */
 
 public final class QueryUtils {
+    private static final String KEY_TITLE = "webTitle";
+    private static final String KEY_SECTION = "sectionName";
+    //TODO Get author key, Davo
+    private static final String KEY_AUTHOR = "";
+    private static final String KEY_PUBLICATION_DATE = "webPublicationDate";
+    private static final String KEY_URL = "apiUrl";
+    
+    //Empty constructor to keep class from becoming instantiated
+    private QueryUtils() {
+    }
 
 }
