@@ -44,4 +44,10 @@ public final class QueryUtils {
         return articles;
     }
 
+    private static String fetchArticleData(String requestUrl) {
+        URL url = createUrl(requestUrl);
+        String articlesJsonString = null;
+        
+    }
+
 }
