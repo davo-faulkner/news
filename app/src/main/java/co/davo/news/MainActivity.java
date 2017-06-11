@@ -7,6 +7,7 @@ import android.net.NetworkInfo;
 import android.os.Bundle;
 import android.app.LoaderManager;
 import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.DefaultItemAnimator;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
@@ -74,9 +75,10 @@ public class MainActivity extends AppCompatActivity implements LoaderManager.Loa
 
         layoutManager = new LinearLayoutManager(this);
         recyclerView.setLayoutManager(layoutManager);
+        recyclerView.setItemAnimator(new DefaultItemAnimator());
 
         //TODO Fix this, Davo
-        articleAdapter = new ArticleAdapter(articles);
+        articleAdapter = new RecyclerAdapter(articles);
         recyclerView.setAdapter(articleAdapter);
 
         emptyStateTextView = (TextView) findViewById(R.id.empty_view);
