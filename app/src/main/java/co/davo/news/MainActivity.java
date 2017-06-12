@@ -19,11 +19,12 @@ import java.util.ArrayList;
 public class MainActivity extends AppCompatActivity implements LoaderManager.LoaderCallbacks<ArrayList<Article>> {
     public static final String LOG_TAG = MainActivity.class.getName();
     private static final int ARTICLE_LOADER_ID = 1;
+    private static final String QUERY_URL = "http://content.guardianapis.com/search?q=debates&api-key=test";
 
     private ArrayList<Article> articles;
 
     private RecyclerView recyclerView;
-    private RecyclerView.Adapter articleAdapter;
+    private RecyclerAdapter articleAdapter;
     private RecyclerView.LayoutManager layoutManager;
 
     private TextView emptyStateTextView;
@@ -95,16 +96,18 @@ public class MainActivity extends AppCompatActivity implements LoaderManager.Loa
             progressBar.setVisibility(View.GONE);
             emptyStateTextView.setText(R.string.no_internet_connection);
         } else {
-            //TODO Resume here, Davo
+            loaderManager.initLoader(ARTICLE_LOADER_ID, null, this);
         }
     }
 
     @Override
     public Loader<ArrayList<Article>> onCreateLoader(int id, Bundle args) {
-        return null;
+        return new ArticleLoader(this, QUERY_URL);
     }
     @Override
     public void onLoadFinished(Loader<ArrayList<Article>> loader, ArrayList<Article> data) {
+        progressBar.setVisibility(View.GONE);
+        emptyStateTextView.setText(R.string.no_articles_found);
 
     }
     @Override
