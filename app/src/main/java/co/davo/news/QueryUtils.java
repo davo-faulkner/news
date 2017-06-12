@@ -70,6 +70,7 @@ public final class QueryUtils {
             Log.e(LOG_TAG, "Problem parsing the book JSON results", e);
             MainActivity.setHasJsonException(true);
         } catch (ParseException e) {
+            //TODO Delete following line, Davo
             Log.e(LOG_TAG, "Problem parsing the Date", e);
             MainActivity.setHasParseException(true);
         }
