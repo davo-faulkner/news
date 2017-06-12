@@ -2,6 +2,9 @@ package co.davo.news;
 
 import android.util.Log;
 
+import org.json.JSONException;
+import org.json.JSONObject;
+
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStream;
@@ -19,6 +22,8 @@ import static co.davo.news.MainActivity.LOG_TAG;
  */
 
 public final class QueryUtils {
+    private static final String KEY_RESPONSE = "response";
+    private static final String KEY_RESULTS = "results";
     private static final String KEY_TITLE = "webTitle";
     private static final String KEY_SECTION = "sectionName";
     //TODO Get following author key, Davo
@@ -33,7 +38,13 @@ public final class QueryUtils {
     public static ArrayList<Article> extractArticles(String requestUrl) {
         ArrayList<Article> articles = new ArrayList<>();
         String articlesJsonString = fetchArticleData(requestUrl);
-
+        try {
+            JSONObject baseJsonResponse = new JSONObject(articlesJsonString);
+        } catch (JSONException e) {
+            //TODO Delete following line, Davo
+            Log.e(LOG_TAG, "Problem parsing the book JSON results", e);
+            MainActivity.setHasJsonException(true);
+        }
         return articles;
     }
 
