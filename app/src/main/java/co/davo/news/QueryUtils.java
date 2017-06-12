@@ -2,6 +2,7 @@ package co.davo.news;
 
 import android.util.Log;
 
+import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
@@ -29,7 +30,7 @@ public final class QueryUtils {
     //TODO Get following author key, Davo
     private static final String KEY_AUTHOR = "";
     private static final String KEY_PUBLICATION_DATE = "webPublicationDate";
-    private static final String KEY_URL = "apiUrl";
+    private static final String KEY_URL = "webUrl";
 
     //Empty constructor to keep class from becoming instantiated
     private QueryUtils() {
@@ -40,6 +41,20 @@ public final class QueryUtils {
         String articlesJsonString = fetchArticleData(requestUrl);
         try {
             JSONObject baseJsonResponse = new JSONObject(articlesJsonString);
+            JSONObject responseObject = baseJsonResponse.getJSONObject(KEY_RESPONSE);
+            JSONArray articlesArray = responseObject.getJSONArray(KEY_RESULTS);
+            for (int i = 0; i < articlesArray.length(); i++) {
+                JSONObject currentArticle = articlesArray.getJSONObject(i);
+                String title = currentArticle.getString(KEY_TITLE);
+                String section = currentArticle.getString(KEY_SECTION);
+                String author = "Staff";
+                boolean hasAuthor = false;
+                if (currentArticle.has(KEY_AUTHOR)) {
+                    author = currentArticle.getString(KEY_AUTHOR);
+                    hasAuthor = true;
+                }
+                
+            }
         } catch (JSONException e) {
             //TODO Delete following line, Davo
             Log.e(LOG_TAG, "Problem parsing the book JSON results", e);
