@@ -21,7 +21,7 @@ import static co.davo.news.MainActivity.LOG_TAG;
 public final class QueryUtils {
     private static final String KEY_TITLE = "webTitle";
     private static final String KEY_SECTION = "sectionName";
-    //TODO Get author key, Davo
+    //TODO Get following author key, Davo
     private static final String KEY_AUTHOR = "";
     private static final String KEY_PUBLICATION_DATE = "webPublicationDate";
     private static final String KEY_URL = "apiUrl";
@@ -43,6 +43,7 @@ public final class QueryUtils {
         try {
             articlesJsonString = makeHttpRequest(url);
         } catch (IOException e) {
+            //TODO Delete following line, Davo
             Log.e(LOG_TAG, "Error closing input stream", e);
             MainActivity.setHasIoException(true);
         }
@@ -67,11 +68,13 @@ public final class QueryUtils {
                 jsonResponse = readFromStream(inputStream);
             } else {
                 String badResponseCode = "Error response code: " + urlConnection.getResponseCode();
+                //TODO Delete following line, Davo
                 Log.e(LOG_TAG, badResponseCode);
                 MainActivity.setHasBadResponseCode(true);
                 MainActivity.setBadResponseCode(urlConnection.getResponseCode());
             }
         } catch (IOException e) {
+            //TODO Delete following line, Davo
             Log.e(LOG_TAG, "Problem retrieving the article JSON results", e);
             MainActivity.setHasIoException2(true);
         } finally {
@@ -105,6 +108,7 @@ public final class QueryUtils {
             url = new URL(stringUrl);
         }
         catch (MalformedURLException e) {
+            //TODO Delete following line, Davo
             Log.e(LOG_TAG, "Error creating URL", e);
             MainActivity.setHasMalformedUrlException(true);
         }

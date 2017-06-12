@@ -12,8 +12,6 @@ import android.widget.TextView;
 
 import java.util.ArrayList;
 
-import static android.R.attr.start;
-
 /**
  * Created by Davo on 6/5/2017.
  */
@@ -31,8 +29,6 @@ public class RecyclerAdapter extends RecyclerView.Adapter<RecyclerAdapter.Articl
         private TextView authorTextView;
         private TextView publicationDateTextView;
 
-        private static final String ARTICLE_KEY = "ARTICLE";
-
         public ArticleHolder(View v) {
             super(v);
 
@@ -46,6 +42,7 @@ public class RecyclerAdapter extends RecyclerView.Adapter<RecyclerAdapter.Articl
 
         @Override
         public void onClick(View v) {
+            //TODO Delete following line, Davo
             Log.d("RecyclerView", "CLICK!");
             Context context = v.getContext();
             int itemPosition = getAdapterPosition();
