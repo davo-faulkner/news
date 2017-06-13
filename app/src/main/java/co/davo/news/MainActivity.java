@@ -72,14 +72,16 @@ public class MainActivity extends AppCompatActivity implements LoaderManager.Loa
         setContentView(R.layout.activity_main);
 
         recyclerView = (RecyclerView) findViewById(R.id.recycler_view);
+        recyclerView.setVisibility(View.GONE);
         layoutManager = new LinearLayoutManager(this);
-        articleAdapter = new RecyclerAdapter(articles);
         recyclerView.setAdapter(articleAdapter);
         recyclerView.setHasFixedSize(true);
         recyclerView.setLayoutManager(layoutManager);
         recyclerView.setItemAnimator(new DefaultItemAnimator());
 
         emptyStateTextView = (TextView) findViewById(R.id.empty_view);
+        emptyStateTextView.setText(R.string.no_articles_found);
+        emptyStateTextView.setVisibility(View.GONE);
 
         ConnectivityManager cm =
                 (ConnectivityManager) this.getSystemService(Context.CONNECTIVITY_SERVICE);
@@ -89,13 +91,16 @@ public class MainActivity extends AppCompatActivity implements LoaderManager.Loa
                 activeNetwork.isConnectedOrConnecting();
 
         progressBar = (ProgressBar) findViewById(R.id.loading_spinner);
-
-        LoaderManager loaderManager = getLoaderManager();
+        progressBar.setVisibility(View.VISIBLE);
 
         if (!isConnected) {
             progressBar.setVisibility(View.GONE);
             emptyStateTextView.setText(R.string.no_internet_connection);
+            emptyStateTextView.setVisibility(View.VISIBLE);
         } else {
+            articleAdapter = new RecyclerAdapter(new ArrayList<Article>());
+            recyclerView.setAdapter(articleAdapter);
+            LoaderManager loaderManager = getLoaderManager();
             loaderManager.initLoader(ARTICLE_LOADER_ID, null, this);
         }
     }
@@ -107,11 +112,16 @@ public class MainActivity extends AppCompatActivity implements LoaderManager.Loa
     @Override
     public void onLoadFinished(Loader<ArrayList<Article>> loader, ArrayList<Article> data) {
         progressBar.setVisibility(View.GONE);
-        emptyStateTextView.setText(R.string.no_articles_found);
-
+        if (data !=null && !data.isEmpty()) {
+            recyclerView.setVisibility(View.VISIBLE);
+            this.articles = data;
+            articleAdapter = new RecyclerAdapter(articles);
+        } else {
+            emptyStateTextView.setVisibility(View.VISIBLE);
+        }
     }
     @Override
     public void onLoaderReset(Loader<ArrayList<Article>> loader) {
-
+        articles.clear();
     }
 }
