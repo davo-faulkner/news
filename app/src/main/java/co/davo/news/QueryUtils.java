@@ -17,7 +17,9 @@ import java.nio.charset.Charset;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.Date;
+import java.util.TimeZone;
 
 import static co.davo.news.MainActivity.LOG_TAG;
 
@@ -59,9 +61,12 @@ public final class QueryUtils {
                 String basePublicationDate = currentArticle.getString(KEY_PUBLICATION_DATE);
                 SimpleDateFormat dateParser = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss'Z'");
                 Date publishedDate = dateParser.parse(basePublicationDate);
+                Calendar calendar = Calendar.getInstance();
+                TimeZone timeZone = calendar.getTimeZone();
+                Log.d("Time zone: ", timeZone.getDisplayName());
                 SimpleDateFormat publishedDateFormatter = new SimpleDateFormat("MMM d HH:mm");
+                publishedDateFormatter.setTimeZone(timeZone);
                 String publishedDateString = publishedDateFormatter.format(publishedDate);
-//                String publishedDateString = "Jan 1 12:00";
                 String url = currentArticle.getString(KEY_URL);
 
                 articles.add(new Article(title, section, hasAuthor, author, publishedDateString, url));
