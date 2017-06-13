@@ -14,7 +14,10 @@ import java.net.HttpURLConnection;
 import java.net.MalformedURLException;
 import java.net.URL;
 import java.nio.charset.Charset;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 
 import static co.davo.news.MainActivity.LOG_TAG;
 
@@ -53,12 +56,12 @@ public final class QueryUtils {
                     author = currentArticle.getString(KEY_AUTHOR);
                     hasAuthor = true;
                 }
-//                String basePublicationDate = currentArticle.getString(KEY_PUBLICATION_DATE);
-//                SimpleDateFormat dateParser = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ssZ");
-//                Date publishedDate = dateParser.parse(basePublicationDate);
-//                SimpleDateFormat publishedDateFormatter = new SimpleDateFormat("MMM d HH:mm");
-                //String publishedDateString = publishedDateFormatter.format(publishedDate);
-                String publishedDateString = "Jan 1 12:00";
+                String basePublicationDate = currentArticle.getString(KEY_PUBLICATION_DATE);
+                SimpleDateFormat dateParser = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss'Z'");
+                Date publishedDate = dateParser.parse(basePublicationDate);
+                SimpleDateFormat publishedDateFormatter = new SimpleDateFormat("MMM d HH:mm");
+                String publishedDateString = publishedDateFormatter.format(publishedDate);
+//                String publishedDateString = "Jan 1 12:00";
                 String url = currentArticle.getString(KEY_URL);
 
                 articles.add(new Article(title, section, hasAuthor, author, publishedDateString, url));
@@ -67,11 +70,11 @@ public final class QueryUtils {
             //TODO Delete following line, Davo
             Log.e(LOG_TAG, "Problem parsing the book JSON results", e);
             MainActivity.setHasJsonException(true);
-        } //catch (ParseException e) {
-//            //TODO Delete following line, Davo
-//            Log.e(LOG_TAG, "Problem parsing the Date", e);
-//            MainActivity.setHasParseException(true);
-//        }
+        }   catch (ParseException e) {
+            //TODO Delete following line, Davo
+            Log.e(LOG_TAG, "Problem parsing the Date", e);
+            MainActivity.setHasParseException(true);
+        }
         return articles;
     }
 
