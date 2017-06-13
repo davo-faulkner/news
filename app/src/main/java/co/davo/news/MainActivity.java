@@ -13,6 +13,7 @@ import android.support.v7.widget.RecyclerView;
 import android.view.View;
 import android.widget.ProgressBar;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import java.util.ArrayList;
 
@@ -24,7 +25,7 @@ public class MainActivity extends AppCompatActivity implements LoaderManager.Loa
     private ArrayList<Article> articles;
 
     private RecyclerView recyclerView;
-    private RecyclerAdapter articleAdapter;
+    private RecyclerAdapter articleRecyclerAdapter;
     private RecyclerView.LayoutManager layoutManager;
 
     private TextView emptyStateTextView;
@@ -74,7 +75,7 @@ public class MainActivity extends AppCompatActivity implements LoaderManager.Loa
         recyclerView = (RecyclerView) findViewById(R.id.recycler_view);
         recyclerView.setVisibility(View.GONE);
         layoutManager = new LinearLayoutManager(this);
-        recyclerView.setAdapter(articleAdapter);
+        recyclerView.setAdapter(articleRecyclerAdapter);
         recyclerView.setHasFixedSize(true);
         recyclerView.setLayoutManager(layoutManager);
         recyclerView.setItemAnimator(new DefaultItemAnimator());
@@ -98,8 +99,8 @@ public class MainActivity extends AppCompatActivity implements LoaderManager.Loa
             emptyStateTextView.setText(R.string.no_internet_connection);
             emptyStateTextView.setVisibility(View.VISIBLE);
         } else {
-            articleAdapter = new RecyclerAdapter(new ArrayList<Article>());
-            recyclerView.setAdapter(articleAdapter);
+            articleRecyclerAdapter = new RecyclerAdapter(new ArrayList<Article>());
+            recyclerView.setAdapter(articleRecyclerAdapter);
             LoaderManager loaderManager = getLoaderManager();
             loaderManager.initLoader(ARTICLE_LOADER_ID, null, this);
         }
@@ -115,9 +116,28 @@ public class MainActivity extends AppCompatActivity implements LoaderManager.Loa
         if (data !=null && !data.isEmpty()) {
             recyclerView.setVisibility(View.VISIBLE);
             this.articles = data;
-            articleAdapter = new RecyclerAdapter(articles);
+            articleRecyclerAdapter = new RecyclerAdapter(articles);
         } else {
             emptyStateTextView.setVisibility(View.VISIBLE);
+        }
+        if (hasJsonException) {
+            Toast.makeText(this, "Problem parsing the book JSON results", Toast.LENGTH_SHORT).show();
+        }
+        if (hasParseException) {
+            Toast.makeText(this, "Problem parsing the Date", Toast.LENGTH_SHORT).show();
+        }
+        if (hasIoException) {
+            Toast.makeText(this, "Error closing input stream", Toast.LENGTH_SHORT).show();
+        }
+        if (hasBadResponseCode) {
+            String badResponseCodeString = "Error response code " + badResponseCode;
+            Toast.makeText(this, badResponseCodeString, Toast.LENGTH_SHORT).show();
+        }
+        if (hasIoException2) {
+            Toast.makeText(this, "Problem retrieving the book JSON results", Toast.LENGTH_SHORT).show();
+        }
+        if (hasMalformedUrlException) {
+            Toast.makeText(this, "Error creating URL", Toast.LENGTH_SHORT).show();
         }
     }
     @Override
