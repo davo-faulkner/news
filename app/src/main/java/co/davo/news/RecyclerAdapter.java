@@ -40,7 +40,6 @@ public class RecyclerAdapter extends RecyclerView.Adapter<RecyclerAdapter.Articl
 
         @Override
         public void onClick(View v) {
-            //TODO Delete following line, Davo
             Log.d("RecyclerView", "CLICK!");
             Context context = v.getContext();
             int itemPosition = getAdapterPosition();

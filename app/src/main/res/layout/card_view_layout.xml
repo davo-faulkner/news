@@ -4,11 +4,11 @@
     android:id="@+id/card_view"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    card_view:cardCornerRadius="4dp"
+    android:layout_marginBottom="4dp"
     android:layout_marginLeft="8dp"
     android:layout_marginRight="8dp"
     android:layout_marginTop="6dp"
-    android:layout_marginBottom="4dp">
+    card_view:cardCornerRadius="4dp">
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -17,42 +17,27 @@
 
         <TextView
             android:id="@+id/title"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:fontFamily="sans-serif"
+            android:layout_marginBottom="0dp"
             android:textSize="18sp"
             android:textStyle="bold"
-            android:textColor="@android:color/black"
-            android:layout_marginLeft="8dp"
-            android:layout_marginRight="8dp"
-            android:layout_marginBottom="0dp"
-            tools:text="Title" />
+            tools:text="Title"
+            style="@style/textview_style" />
 
         <TextView
             android:id="@+id/section"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:fontFamily="sans-serif"
+            android:layout_marginBottom="0dp"
             android:textSize="18sp"
             android:textStyle="italic"
-            android:textColor="@android:color/black"
-            android:layout_marginLeft="8dp"
-            android:layout_marginRight="8dp"
-            android:layout_marginBottom="0dp"
-            tools:text="Section" />
+            tools:text="Section"
+            style="@style/textview_style" />
 
         <TextView
             android:id="@+id/publication_date"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:fontFamily="sans-serif"
-            android:textSize="14sp"
-            android:textColor="@android:color/black"
-            android:layout_marginTop="8dp"
-            android:layout_marginLeft="8dp"
-            android:layout_marginRight="8dp"
             android:layout_marginBottom="4dp"
-            tools:text="Publication Date" />
+            android:layout_marginTop="8dp"
+            android:textSize="14sp"
+            tools:text="Publication Date"
+            style="@style/textview_style" />
 
     </LinearLayout>
 </android.support.v7.widget.CardView>

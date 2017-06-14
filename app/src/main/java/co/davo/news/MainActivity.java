@@ -19,7 +19,7 @@ import java.util.ArrayList;
 public class MainActivity extends AppCompatActivity implements LoaderManager.LoaderCallbacks<ArrayList<Article>> {
     public static final String LOG_TAG = MainActivity.class.getName();
     private static final int ARTICLE_LOADER_ID = 1;
-    private static final String QUERY_URL = "http://content.guardianapis.com/search?q=debates&api-key=test";
+    private static final String QUERY_URL = "http://content.guardianapis.com/search?q=tower&api-key=test";
 
     private ArrayList<Article> articles;
 
@@ -74,7 +74,6 @@ public class MainActivity extends AppCompatActivity implements LoaderManager.Loa
         recyclerView = (RecyclerView) findViewById(R.id.recycler_view);
         recyclerView.setVisibility(View.GONE);
         layoutManager = new LinearLayoutManager(this);
-        recyclerView.setAdapter(articleRecyclerAdapter);
         recyclerView.setHasFixedSize(true);
         recyclerView.setLayoutManager(layoutManager);
 
@@ -108,12 +107,13 @@ public class MainActivity extends AppCompatActivity implements LoaderManager.Loa
     public Loader<ArrayList<Article>> onCreateLoader(int id, Bundle args) {
         return new ArticleLoader(this, QUERY_URL);
     }
+
     @Override
     public void onLoadFinished(Loader<ArrayList<Article>> loader, ArrayList<Article> data) {
         progressBar.setVisibility(View.GONE);
         //TODO Uncomment next line to test empty view.
         //data.clear();
-        if (data !=null && !data.isEmpty()) {
+        if (data != null && !data.isEmpty()) {
             recyclerView.setVisibility(View.VISIBLE);
             this.articles = data;
             articleRecyclerAdapter = new RecyclerAdapter(articles);
@@ -140,6 +140,7 @@ public class MainActivity extends AppCompatActivity implements LoaderManager.Loa
             Toast.makeText(this, "Error creating URL", Toast.LENGTH_SHORT).show();
         }
     }
+
     @Override
     public void onLoaderReset(Loader<ArrayList<Article>> loader) {
         articles.clear();

@@ -32,7 +32,6 @@ public final class QueryUtils {
     private static final String KEY_RESULTS = "results";
     private static final String KEY_TITLE = "webTitle";
     private static final String KEY_SECTION = "sectionName";
-
     private static final String KEY_PUBLICATION_DATE = "webPublicationDate";
     private static final String KEY_URL = "webUrl";
 
@@ -63,11 +62,9 @@ public final class QueryUtils {
                 articles.add(new Article(title, section, publishedDateString, url));
             }
         } catch (JSONException e) {
-            //TODO Delete following line, Davo
             Log.e(LOG_TAG, "Problem parsing the book JSON results", e);
             MainActivity.setHasJsonException(true);
-        }   catch (ParseException e) {
-            //TODO Delete following line, Davo
+        } catch (ParseException e) {
             Log.e(LOG_TAG, "Problem parsing the Date", e);
             MainActivity.setHasParseException(true);
         }
@@ -80,7 +77,6 @@ public final class QueryUtils {
         try {
             articlesJsonString = makeHttpRequest(url);
         } catch (IOException e) {
-            //TODO Delete following line, Davo
             Log.e(LOG_TAG, "Error closing input stream", e);
             MainActivity.setHasIoException(true);
         }
@@ -105,13 +101,11 @@ public final class QueryUtils {
                 jsonResponse = readFromStream(inputStream);
             } else {
                 String badResponseCode = "Error response code: " + urlConnection.getResponseCode();
-                //TODO Delete following line, Davo
                 Log.e(LOG_TAG, badResponseCode);
                 MainActivity.setHasBadResponseCode(true);
                 MainActivity.setBadResponseCode(urlConnection.getResponseCode());
             }
         } catch (IOException e) {
-            //TODO Delete following line, Davo
             Log.e(LOG_TAG, "Problem retrieving the article JSON results", e);
             MainActivity.setHasIoException2(true);
         } finally {
@@ -143,9 +137,7 @@ public final class QueryUtils {
         URL url = null;
         try {
             url = new URL(stringUrl);
-        }
-        catch (MalformedURLException e) {
-            //TODO Delete following line, Davo
+        } catch (MalformedURLException e) {
             Log.e(LOG_TAG, "Error creating URL", e);
             MainActivity.setHasMalformedUrlException(true);
         }
