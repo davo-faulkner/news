@@ -60,12 +60,10 @@ public final class QueryUtils {
                 }
                 String basePublicationDate = currentArticle.getString(KEY_PUBLICATION_DATE);
                 SimpleDateFormat dateParser = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss'Z'");
+                dateParser.setTimeZone(TimeZone.getTimeZone("GMT"));
                 Date publishedDate = dateParser.parse(basePublicationDate);
-                Calendar calendar = Calendar.getInstance();
-                TimeZone timeZone = calendar.getTimeZone();
-                Log.d("Time zone: ", timeZone.getDisplayName());
                 SimpleDateFormat publishedDateFormatter = new SimpleDateFormat("MMM d HH:mm");
-                publishedDateFormatter.setTimeZone(timeZone);
+                publishedDateFormatter.setTimeZone(Calendar.getInstance().getTimeZone());
                 String publishedDateString = publishedDateFormatter.format(publishedDate);
                 String url = currentArticle.getString(KEY_URL);
 
