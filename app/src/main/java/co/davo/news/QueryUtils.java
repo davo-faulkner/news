@@ -62,7 +62,7 @@ public final class QueryUtils {
                 SimpleDateFormat dateParser = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss'Z'");
                 dateParser.setTimeZone(TimeZone.getTimeZone("GMT"));
                 Date publishedDate = dateParser.parse(basePublicationDate);
-                SimpleDateFormat publishedDateFormatter = new SimpleDateFormat("MMM d HH:mm");
+                SimpleDateFormat publishedDateFormatter = new SimpleDateFormat("MMMM d, yyyy h:mm a z");
                 publishedDateFormatter.setTimeZone(Calendar.getInstance().getTimeZone());
                 String publishedDateString = publishedDateFormatter.format(publishedDate);
                 String url = currentArticle.getString(KEY_URL);
