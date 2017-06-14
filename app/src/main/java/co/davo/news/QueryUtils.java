@@ -32,8 +32,7 @@ public final class QueryUtils {
     private static final String KEY_RESULTS = "results";
     private static final String KEY_TITLE = "webTitle";
     private static final String KEY_SECTION = "sectionName";
-    //TODO Get following author key, Davo
-    private static final String KEY_AUTHOR = "";
+
     private static final String KEY_PUBLICATION_DATE = "webPublicationDate";
     private static final String KEY_URL = "webUrl";
 
@@ -52,12 +51,6 @@ public final class QueryUtils {
                 JSONObject currentArticle = articlesArray.getJSONObject(i);
                 String title = currentArticle.getString(KEY_TITLE);
                 String section = currentArticle.getString(KEY_SECTION);
-                String author = "Staff";
-                boolean hasAuthor = false;
-                if (currentArticle.has(KEY_AUTHOR)) {
-                    author = currentArticle.getString(KEY_AUTHOR);
-                    hasAuthor = true;
-                }
                 String basePublicationDate = currentArticle.getString(KEY_PUBLICATION_DATE);
                 SimpleDateFormat dateParser = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss'Z'");
                 dateParser.setTimeZone(TimeZone.getTimeZone("GMT"));
@@ -67,7 +60,7 @@ public final class QueryUtils {
                 String publishedDateString = publishedDateFormatter.format(publishedDate);
                 String url = currentArticle.getString(KEY_URL);
 
-                articles.add(new Article(title, section, hasAuthor, author, publishedDateString, url));
+                articles.add(new Article(title, section, publishedDateString, url));
             }
         } catch (JSONException e) {
             //TODO Delete following line, Davo

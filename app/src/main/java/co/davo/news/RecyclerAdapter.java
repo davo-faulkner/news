@@ -26,7 +26,6 @@ public class RecyclerAdapter extends RecyclerView.Adapter<RecyclerAdapter.Articl
     public static class ArticleHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
         private TextView titleTextView;
         private TextView sectionTextView;
-        private TextView authorTextView;
         private TextView publicationDateTextView;
 
         public ArticleHolder(View v) {
@@ -34,7 +33,6 @@ public class RecyclerAdapter extends RecyclerView.Adapter<RecyclerAdapter.Articl
 
             this.titleTextView = (TextView) v.findViewById(R.id.title);
             this.sectionTextView = (TextView) v.findViewById(R.id.section);
-            this.authorTextView = (TextView) v.findViewById(R.id.author);
             this.publicationDateTextView = (TextView) v.findViewById(R.id.publication_date);
 
             v.setOnClickListener(this);
@@ -65,7 +63,6 @@ public class RecyclerAdapter extends RecyclerView.Adapter<RecyclerAdapter.Articl
         Article article = articles.get(position);
         holder.titleTextView.setText(article.getTitle());
         holder.sectionTextView.setText(article.getSection());
-        holder.authorTextView.setText(article.getAuthor());
         holder.publicationDateTextView.setText(article.getPublicationDate());
     }
 
