@@ -111,8 +111,6 @@ public class MainActivity extends AppCompatActivity implements LoaderManager.Loa
     @Override
     public void onLoadFinished(Loader<ArrayList<Article>> loader, ArrayList<Article> data) {
         progressBar.setVisibility(View.GONE);
-        //TODO Uncomment next line to test empty view.
-        //data.clear();
         if (data != null && !data.isEmpty()) {
             recyclerView.setVisibility(View.VISIBLE);
             this.articles = data;
