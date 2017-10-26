@@ -16,10 +16,12 @@ import android.widget.Toast;
 
 import java.util.ArrayList;
 
-public class MainActivity extends AppCompatActivity implements LoaderManager.LoaderCallbacks<ArrayList<Article>> {
+public class MainActivity extends AppCompatActivity implements
+        LoaderManager.LoaderCallbacks<ArrayList<Article>> {
     public static final String LOG_TAG = MainActivity.class.getName();
     private static final int ARTICLE_LOADER_ID = 1;
-    private static final String QUERY_URL = "http://content.guardianapis.com/search?q=tower&api-key=test";
+    private static final String QUERY_URL =
+            "http://content.guardianapis.com/search?q=tower&api-key=test";
 
     private ArrayList<Article> articles;
 
@@ -119,20 +121,24 @@ public class MainActivity extends AppCompatActivity implements LoaderManager.Loa
             emptyStateTextView.setVisibility(View.VISIBLE);
         }
         if (hasJsonException) {
-            Toast.makeText(this, "Problem parsing the book JSON results", Toast.LENGTH_SHORT).show();
+            Toast.makeText(this, "Problem parsing the book JSON results",
+                    Toast.LENGTH_SHORT).show();
         }
         if (hasParseException) {
-            Toast.makeText(this, "Problem parsing the Date", Toast.LENGTH_SHORT).show();
+            Toast.makeText(this, "Problem parsing the Date",
+                    Toast.LENGTH_SHORT).show();
         }
         if (hasIoException) {
-            Toast.makeText(this, "Error closing input stream", Toast.LENGTH_SHORT).show();
+            Toast.makeText(this, "Error closing input stream",
+                    Toast.LENGTH_SHORT).show();
         }
         if (hasBadResponseCode) {
             String badResponseCodeString = "Error response code " + badResponseCode;
             Toast.makeText(this, badResponseCodeString, Toast.LENGTH_SHORT).show();
         }
         if (hasIoException2) {
-            Toast.makeText(this, "Problem retrieving the book JSON results", Toast.LENGTH_SHORT).show();
+            Toast.makeText(this, "Problem retrieving the book JSON results",
+                    Toast.LENGTH_SHORT).show();
         }
         if (hasMalformedUrlException) {
             Toast.makeText(this, "Error creating URL", Toast.LENGTH_SHORT).show();

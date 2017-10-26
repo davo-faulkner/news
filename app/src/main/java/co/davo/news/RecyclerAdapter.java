@@ -23,7 +23,8 @@ public class RecyclerAdapter extends RecyclerView.Adapter<RecyclerAdapter.Articl
         this.articles = articles;
     }
 
-    public static class ArticleHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
+    public static class ArticleHolder extends RecyclerView.ViewHolder implements
+            View.OnClickListener {
         private TextView titleTextView;
         private TextView sectionTextView;
         private TextView publicationDateTextView;
@@ -53,7 +54,8 @@ public class RecyclerAdapter extends RecyclerView.Adapter<RecyclerAdapter.Articl
 
     @Override
     public RecyclerAdapter.ArticleHolder onCreateViewHolder(ViewGroup parent, int viewType) {
-        View inflatedView = LayoutInflater.from(parent.getContext()).inflate(R.layout.card_view_layout, parent, false);
+        View inflatedView = LayoutInflater.from(parent.getContext()).
+                inflate(R.layout.card_view_layout, parent, false);
         return new ArticleHolder(inflatedView);
     }
 
